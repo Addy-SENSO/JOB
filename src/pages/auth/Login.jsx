@@ -1,24 +1,63 @@
-export default function Login() {
-  return (
-    <div style={{
-      minHeight: "100vh",
+import React from "react";
+
+function Login() {
+  const styles = {
+    container: {
+      height: "100vh",
       display: "flex",
       justifyContent: "center",
-      alignItems: "center"
-    }}>
-      <div className="card" style={{ width: "420px" }}>
-        <h2>Welcome Back</h2>
-        <p style={{ color: "#6b7280", marginBottom: "20px" }}>
-          Sign in to continue
-        </p>
+      alignItems: "center",
+      background: "linear-gradient(135deg, #1e3c72, #2a5298)",
+      fontFamily: "Arial, sans-serif",
+    },
+    box: {
+      backgroundColor: "white",
+      padding: "40px",
+      width: "350px",
+      borderRadius: "12px",
+      boxShadow: "0 10px 25px rgba(0,0,0,0.2)",
+      textAlign: "center",
+    },
+    heading: {
+      marginBottom: "25px",
+      color: "#1e3c72",
+    },
+    input: {
+      width: "100%",
+      padding: "12px",
+      marginBottom: "15px",
+      borderRadius: "6px",
+      border: "1px solid #ccc",
+      fontSize: "14px",
+    },
+    button: {
+      width: "100%",
+      padding: "12px",
+      border: "none",
+      borderRadius: "6px",
+      backgroundColor: "#1e3c72",
+      color: "white",
+      fontSize: "15px",
+      cursor: "pointer",
+    },
+  };
 
-        <input className="input" placeholder="Email address" />
-        <input className="input" type="password" placeholder="Password" style={{ marginTop: "12px" }} />
-
-        <button className="btn-primary" style={{ width: "100%", marginTop: "20px" }}>
-          Sign In
-        </button>
+  return (
+    <div style={styles.container}>
+      <div style={styles.box}>
+        <h2 style={styles.heading}>Login to JobPortal</h2>
+        <form>
+          <input type="email" placeholder="Email" style={styles.input} required />
+          <input type="password" placeholder="Password" style={styles.input} required />
+          <button type="submit" style={styles.button}>
+            Login
+          </button>
+        </form>
       </div>
     </div>
   );
 }
+
+export default Login;
+
+

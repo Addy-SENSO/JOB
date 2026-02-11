@@ -1,4 +1,15 @@
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+
 export default function Register() {
+  const navigate = useNavigate();
+  const [role, setRole] = useState("jobseeker");
+
+  const handleRegister = () => {
+    console.log("Selected Role:", role);
+    navigate("/login");
+  };
+
   return (
     <div
       style={{
@@ -27,19 +38,29 @@ export default function Register() {
         {/* Role Selector */}
         <div style={{ display: "flex", gap: "10px", marginBottom: "16px" }}>
           <button
-            className="btn-primary"
-            style={{ flex: 1, padding: "10px" }}
+            onClick={() => setRole("jobseeker")}
+            style={{
+              flex: 1,
+              padding: "10px",
+              borderRadius: "12px",
+              border: role === "jobseeker" ? "none" : "1px solid #d1d5db",
+              background: role === "jobseeker" ? "#6366f1" : "white",
+              color: role === "jobseeker" ? "white" : "black",
+              cursor: "pointer",
+            }}
           >
             Job Seeker
           </button>
 
           <button
+            onClick={() => setRole("employer")}
             style={{
               flex: 1,
               padding: "10px",
               borderRadius: "12px",
-              border: "1px solid #d1d5db",
-              background: "white",
+              border: role === "employer" ? "none" : "1px solid #d1d5db",
+              background: role === "employer" ? "#6366f1" : "white",
+              color: role === "employer" ? "white" : "black",
               cursor: "pointer",
             }}
           >
@@ -63,6 +84,7 @@ export default function Register() {
 
         {/* Submit */}
         <button
+          onClick={handleRegister}
           className="btn-primary"
           style={{ width: "100%", marginTop: "24px" }}
         >
@@ -87,3 +109,4 @@ export default function Register() {
     </div>
   );
 }
+
